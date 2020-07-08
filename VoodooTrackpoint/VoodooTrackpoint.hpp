@@ -19,6 +19,7 @@ class VoodooTrackpoint : public IOService {
 public:
     virtual bool start(IOService *provider) override;
     virtual void stop(IOService *provider) override;
+    bool willTerminate(IOService *provider, IOOptionBits options) override;
     
     
 private:

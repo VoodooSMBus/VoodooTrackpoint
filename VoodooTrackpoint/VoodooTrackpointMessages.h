@@ -12,6 +12,8 @@
 #define kIOMessageVoodooTrackpointRelativePointer iokit_vendor_specific_msg(430)
 #define kIOMessageVoodooTrackpointScrollWheel iokit_vendor_specific_msg(431)
 
+#define VOODOO_TRACKPOINT_IDENTIFIER "VoodooTrackpointIdentifier"
+
 struct RelativePointerEvent {
     uint64_t timestamp;
     int dx;
