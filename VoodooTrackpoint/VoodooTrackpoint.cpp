@@ -18,9 +18,22 @@ bool VoodooTrackpoint::start(IOService *provider) {
         return false;
     }
     
+    setProperty(VOODOO_TRACKPOINT_IDENTIFIER, kOSBooleanTrue);
+    
+    if (!provider->open(this)) {
+        return false;
+    }
+    
     return publishTrackpoint();
 }
 
+bool VoodooTrackpoint::willTerminate(IOService *provider, IOOptionBits options) {
+    if (provider->isOpen(this)) {
+        provider->close(this);
+    }
+    
+    return super::willTerminate(provider, options);
+}
 
 void VoodooTrackpoint::stop(IOService *provider) {
     unpublishTrackpoint();
