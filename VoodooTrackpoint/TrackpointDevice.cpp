@@ -31,6 +31,11 @@ bool TrackpointDevice::start(IOService* provider) {
         return false;
     }
 
+    setProperty(kIOHIDScrollAccelerationTypeKey, kIOHIDTrackpadScrollAccelerationKey);
+    setProperty(kIOHIDScrollResolutionKey, 800 << 16, 32);
+    setProperty("HIDScrollResolutionX", 800 << 16, 32);
+    setProperty("HIDScrollResolutionY", 800 << 16, 32);
+
     registerService();
     return true;
 }
